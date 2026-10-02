@@ -38,7 +38,7 @@ pub async fn edit(c: &mut Ctx) -> Result {
     framed_page!(c, StatusCode::OK, |ctx| accounts::Edit {
         ctx,
         account_id: account.id,
-        join_code: account.join_code.clone(),
+        join_code: can_administer.then(|| account.join_code.clone()),
         restrict_room_creation_to_administrators,
         administrators: administrators.clone(),
         members: members.clone(),

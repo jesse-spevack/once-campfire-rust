@@ -116,7 +116,7 @@ fn accounts_edit() {
             accounts::Edit {
                 ctx,
                 account_id: account_fact(name, "id").as_i64().unwrap(),
-                join_code: account_fact(name, "join_code").as_str().unwrap().into(),
+                join_code: ctx.can_administer().then(|| account_fact(name, "join_code").as_str().unwrap().into()),
                 restrict_room_creation_to_administrators: account_fact(name, "restrict_room_creation_to_administrators").as_bool().unwrap(),
                 administrators,
                 members,
