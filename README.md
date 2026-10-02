@@ -153,6 +153,8 @@ behavior changes and compatibility limits are listed below.
   client direct-upload checksums still validate files. At most four media jobs run off the database
   writer. Variants/posters are saved already analyzed; concurrent transforms keep the first saved
   result and delete duplicates. ffmpeg posters time out at 60 seconds, ffprobe at 30.
+- **Join link:** only administrators see the join link, on the account page and in the empty
+  first room's invitation. Members can't copy it to sign up more accounts.
 - **Request limits:** non-file-upload bodies and direct uploads are capped at 16 MiB (413).
   Nonnumeric direct-upload sizes and oversized QR codes return 422. Page numbers cap at a billion.
 - **Cable limits:** 64 subscriptions per connection, 4 KiB identifiers and 1 MiB messages.
