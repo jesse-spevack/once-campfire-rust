@@ -370,6 +370,8 @@ Deliberate:
   modules (libopenmpt), game-console music (libgme), JPEG XL and SVG frames, codec2 speech,
   teletext subtitles, and DASH/IMF manifests. Tracker modules and game-console music attached to
   a message are now stored without duration or bit rate, which Campfire never shows.
+- **Only administrators see the join link.** Rails shows it to every member, on the account page
+  and in the empty first room's invitation, so any member could sign up more accounts with it.
 - **Limits where Rails had none, or raised.** Request bodies other than file uploads are capped at
   16 MiB (a 413), and so are Active Storage direct uploads, which Campfire's editor doesn't use:
   asking for a larger one is a 413. A QR code for more than a QR code can hold is a 422, not a 500.

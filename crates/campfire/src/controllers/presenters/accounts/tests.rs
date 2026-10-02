@@ -381,6 +381,7 @@ async fn administers_the_account() {
     assert!(edit.text().contains("flash"), "the ✓ notice shows once");
 
     // Join code reset.
+    assert!(edit.text().contains(&format!("/join/{}", test.label("join_codes.signal"))), "administrators get the join link");
     edit.assert_form("/account/join_code");
     assert_redirect(&admin.form("post", "/account/join_code", &[]).await, "http://campfire.test/account/edit");
     assert!(!admin.get("/account/edit").await.text().contains(&test.label("join_codes.signal")));
@@ -405,6 +406,7 @@ async fn administers_the_account() {
     let edit = member.get("/account/edit").await;
     assert_eq!(edit.status, StatusCode::OK);
     assert!(!edit.text().contains(&format!("action=\"{action}\"")), "members get no account form");
+    assert!(!edit.text().contains("/join/"), "members get no join link");
     assert_eq!(member.form("patch", &action, &[("account[name]", "Mine")]).await.status, StatusCode::FORBIDDEN);
     assert_eq!(member.get("/account/bots").await.status, StatusCode::FORBIDDEN);
 }

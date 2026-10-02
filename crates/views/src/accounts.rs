@@ -30,7 +30,9 @@ pub struct Edit<'a> {
     /// `Current.account.id`: `form_with model: @account` posts to `/account.<id>` because the
     /// account is a singular resource (a quirk the reference ships with).
     pub account_id: i64,
-    pub join_code: String,
+    /// `Current.account.join_code`, for administrators only. Rails shows the join link to every
+    /// member; this port hides it so only administrators decide who joins.
+    pub join_code: Option<String>,
     pub restrict_room_creation_to_administrators: bool,
     pub administrators: Vec<UserSummary>,
     pub members: Vec<UserSummary>,
